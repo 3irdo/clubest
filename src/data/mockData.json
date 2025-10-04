@@ -1,0 +1,160 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "juan.perez@example.com",
+      "full_name": "Juan Pérez",
+      "role": "member",
+      "phone": "+34 612 345 678",
+      "membership_status": "active"
+    },
+    {
+      "id": "2",
+      "email": "maria.garcia@example.com",
+      "full_name": "María García",
+      "role": "instructor",
+      "phone": "+34 623 456 789",
+      "membership_status": "active"
+    },
+    {
+      "id": "3",
+      "email": "admin@clubest.com",
+      "full_name": "Admin CLUBEST",
+      "role": "admin", 
+      "phone": "+34 634 567 890",
+      "membership_status": "active"
+    }
+  ],
+  "trainings": [
+    {
+      "id": "1",
+      "title": "Entrenamiento Grupo 1",
+      "description": "Sesión de práctica básica para principiantes",
+      "date": "2025-10-03T10:00:00Z",
+      "duration_minutes": 90,
+      "instructor_id": "2",
+      "max_participants": 12,
+      "status": "scheduled"
+    },
+    {
+      "id": "2",
+      "title": "Entrenamiento Avanzado",
+      "description": "Técnicas avanzadas de tiro",
+      "date": "2025-10-03T16:00:00Z",
+      "duration_minutes": 120,
+      "instructor_id": "2",
+      "max_participants": 8,
+      "status": "scheduled"
+    },
+    {
+      "id": "3",
+      "title": "Sesión de Competición",
+      "description": "Preparación para competiciones oficiales",
+      "date": "2025-10-04T09:00:00Z",
+      "duration_minutes": 180,
+      "instructor_id": "2",
+      "max_participants": 10,
+      "status": "scheduled"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "Arco Recurvo AR",
+      "description": "Arco profesional de alta calidad, diseñado para competición",
+      "price": 850.00,
+      "stock": 5,
+      "image_url": "src/assets/landing/bow.webp",
+      "category": "Arcos"
+    },
+    {
+      "id": "2",
+      "name": "Set Flechas de carbono",
+      "description": "Set de 12 flechas profesionales de carbono",
+      "price": 180.00,
+      "stock": 15,
+      "image_url": "src/assets/landing/flechas.webp",
+      "category": "Flechas"
+    },
+    {
+      "id": "3",
+      "name": "Protector de brazo",
+      "description": "Protector de brazo de cuero genuino",
+      "price": 35.00,
+      "stock": 25,
+      "image_url": "src/assets/landing/protector.webp",
+      "category": "Accesorios"
+    },
+    {
+      "id": "4",
+      "name": "Guante de tiro",
+      "description": "Guante profesional para mayor precisión",
+      "price": 45.00,
+      "stock": 18,
+      "image_url": "https://images.pexels.com/photos/8007389/pexels-photo-8007389.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "category": "Accesorios"
+    },
+    {
+      "id": "5",
+      "name": "Diana profesional",
+      "description": "Diana homologada para competición oficial",
+      "price": 120.00,
+      "stock": 8,
+      "image_url": "https://images.pexels.com/photos/6253903/pexels-photo-6253903.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "category": "Dianas"
+    },
+    {
+      "id": "6",
+      "name": "Carcaj de espalda",
+      "description": "Carcaj ergonómico con capacidad para 20 flechas",
+      "price": 65.00,
+      "stock": 12,
+      "image_url": "https://images.pexels.com/photos/8007394/pexels-photo-8007394.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "category": "Accesorios"
+    }
+  ],
+  "payments": [
+    {
+      "id": "1",
+      "user_id": "1",
+      "amount": 50.00,
+      "concept": "Cuota mensual octubre",
+      "status": "confirmed",
+      "payment_date": "2025-10-01T12:00:00Z"
+    },
+    {
+      "id": "2",
+      "user_id": "1",
+      "amount": 25.00,
+      "concept": "Entrenamiento extra",
+      "status": "pending",
+      "payment_date": null
+    }
+  ],
+  "stats": {
+    "activeUsers": 104,
+    "monthlyPayments": 2000000,
+    "lowStockProducts": 5,
+    "todayTrainings": 3
+  },
+  "recentActivity": [
+    {
+      "type": "reservation",
+      "user": "Juan Pérez",
+      "description": "Nueva reserva",
+      "time": "Oct 25 2PM"
+    },
+    {
+      "type": "payment",
+      "user": "Juan Pérez",
+      "description": "Pago confirmado",
+      "time": "Oct 25 2PM"
+    },
+    {
+      "type": "registration",
+      "user": "María García",
+      "description": "Nuevo usuario registrado",
+      "time": "Oct 24 5PM"
+    }
+  ]
+}
