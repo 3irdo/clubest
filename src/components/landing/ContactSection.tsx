@@ -1,5 +1,6 @@
 import React from 'react';
 import { MapPin, Phone, Mail, MessageCircle } from 'lucide-react';
+import { withBase } from '../../lib/withBase';
 
 export const ContactSection: React.FC = () => {
   return (
@@ -15,9 +16,9 @@ export const ContactSection: React.FC = () => {
           <div>
             <h3 className="text-xl font-bold mb-4 text-accent-green">Nosotros</h3>
             <ul className="space-y-2">
-              <li><a href="/#nosotros" className="hover:text-accent-green transition-colors">Quiénes somos</a></li>
-              <li><a href="/entrenamientos" className="hover:text-accent-green transition-colors">Entrenamientos</a></li>
-              <li><a href="/tienda" className="hover:text-accent-green transition-colors">Tienda</a></li>
+              <li><a href={withBase('#nosotros')} className="hover:text-accent-green transition-colors">Quiénes somos</a></li>
+              <li><a href={withBase('entrenamientos')} className="hover:text-accent-green transition-colors">Entrenamientos</a></li>
+              <li><a href={withBase('tienda')} className="hover:text-accent-green transition-colors">Tienda</a></li>
             </ul>
           </div>
 

@@ -1,6 +1,11 @@
+import womanArcher from '@/assets/landing/womanArcher.jpg'
+//images 
+
+
+
 import React from 'react';
 import { Button } from '../ui/Button';
-
+import { withBase } from '../../lib/withBase';
  export const HeroSection: React.FC = () => {
   return (
     <section className="relative bg-primary-dark text-white pt-20 pb-20 px-4">
@@ -17,14 +22,15 @@ import { Button } from '../ui/Button';
               equipamiento de primera calidad para todos los niveles.
             </p>
             <div className="flex gap-4">
-              <Button variant="accent" size="lg" onClick={() => window.location.href = '#'}>
+              <Button variant="accent" size="lg" onClick={() => window.location.href = withBase('store')}>
                 Ver equipamiento
               </Button>
             </div>
           </div>
           <div className="hidden md:block">
             <img
-              src="src/assets/landing/womanArcher.jpg"
+              src= {womanArcher.src}
+
               alt="Tiro con arco"
               className="rounded-xl shadow-2xl"
             />
@@ -34,4 +40,5 @@ import { Button } from '../ui/Button';
     </section>
   );
 };
+
 

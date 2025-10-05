@@ -14,18 +14,19 @@ import {
 interface SidebarProps {
   currentPath?: string;
 }
+import { withBase } from '@/lib/withBase';
 
-export const Sidebar: React.FC<SidebarProps> = ({ currentPath = '/dashboard' }) => {
+export const Sidebar: React.FC<SidebarProps> = ({ currentPath = withBase('dashboard') }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   const menuItems = [
-    { icon: LayoutDashboard, label: 'Dashboard', path: '/dashboard' },
-    { icon: Calendar, label: 'Entrenamientos', path: '/training' },
-    { icon: CreditCard, label: 'Pagos', path: '/payments' },
-    { icon: FileText, label: 'Documentos', path: '/documents' },
-    { icon: ShoppingBag, label: 'Tienda', path: '/store' },
-    { icon: User, label: 'Perfil', path: '/profile' },
-    { icon: Settings, label: 'Administración', path: '/admin' }
+    { icon: LayoutDashboard, label: 'Dashboard', path: withBase('/dashboard') },
+    { icon: Calendar, label: 'Entrenamientos', path: withBase('training') },
+    { icon: CreditCard, label: 'Pagos', path: withBase('payments') },
+    { icon: FileText, label: 'Documentos', path: withBase('documents') },
+    { icon: ShoppingBag, label: 'Tienda', path: withBase('store') },
+    { icon: User, label: 'Perfil', path: withBase('profile') },
+    { icon: Settings, label: 'Administración', path: withBase('admin') }
   ];
 
   return (

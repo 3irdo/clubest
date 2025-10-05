@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from '../ui/Button';
 import { Input } from '../ui/Input';
+import { withBase } from '../../lib/withBase';
 
 export const RegisterForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -99,7 +100,7 @@ export const RegisterForm: React.FC = () => {
       <div className="mt-6 text-center">
         <p className="text-text-secondary">
           ¿Ya tienes una cuenta?{' '}
-          <a href="/login" className="text-accent-green hover:underline">
+          <a href={withBase('login')} className="text-accent-green hover:underline">
             Iniciar sesión
           </a>
         </p>

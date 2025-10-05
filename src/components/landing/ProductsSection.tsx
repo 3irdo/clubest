@@ -1,6 +1,7 @@
 import React from 'react';
 import { ShoppingCart } from 'lucide-react';
 import mockData from '../../data/mockData.json';
+import { withBase } from '../../lib/withBase';
 
 export const ProductsSection: React.FC = () => {
   const products = mockData.products.slice(0, 3);
@@ -48,7 +49,7 @@ export const ProductsSection: React.FC = () => {
 
         <div className="text-center mt-12">
           <a
-            href="/tienda"
+            href={withBase('tienda')}
             className="inline-block bg-primary hover:bg-primary-light text-white font-semibold py-3 px-8 rounded-lg transition-colors"
           >
             Ver la tienda

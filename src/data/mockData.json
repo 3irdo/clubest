@@ -1,3 +1,4 @@
+
 {
   "users": [
     {
@@ -64,7 +65,7 @@
       "description": "Arco profesional de alta calidad, diseñado para competición",
       "price": 850.00,
       "stock": 5,
-      "image_url": "src/assets/landing/bow.webp",
+      "image_url": "/clubest/src/assets/landing/bow.webp",
       "category": "Arcos"
     },
     {
@@ -73,7 +74,7 @@
       "description": "Set de 12 flechas profesionales de carbono",
       "price": 180.00,
       "stock": 15,
-      "image_url": "src/assets/landing/flechas.webp",
+      "image_url": "/clubest/src/assets/landing/flechas.webp",
       "category": "Flechas"
     },
     {
@@ -82,7 +83,7 @@
       "description": "Protector de brazo de cuero genuino",
       "price": 35.00,
       "stock": 25,
-      "image_url": "src/assets/landing/protector.webp",
+      "image_url": "/clubest/src/assets/landing/protector.webp",
       "category": "Accesorios"
     },
     {
@@ -91,7 +92,7 @@
       "description": "Guante profesional para mayor precisión",
       "price": 45.00,
       "stock": 18,
-      "image_url": "https://images.pexels.com/photos/8007389/pexels-photo-8007389.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "image_url": "/clubest/src/assets/landing/flechas.webp",
       "category": "Accesorios"
     },
     {
@@ -100,7 +101,7 @@
       "description": "Diana homologada para competición oficial",
       "price": 120.00,
       "stock": 8,
-      "image_url": "https://images.pexels.com/photos/6253903/pexels-photo-6253903.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "image_url": "/clubest/src/assets/landing/flechas.webp",
       "category": "Dianas"
     },
     {
@@ -109,7 +110,7 @@
       "description": "Carcaj ergonómico con capacidad para 20 flechas",
       "price": 65.00,
       "stock": 12,
-      "image_url": "https://images.pexels.com/photos/8007394/pexels-photo-8007394.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "image_url": "/clubest/src/assets/landing/flechas.webp",
       "category": "Accesorios"
     }
   ],
