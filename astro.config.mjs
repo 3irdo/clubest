@@ -7,7 +7,7 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   integrations: [react(), tailwind()],
   output: 'static',
-  site: 'https://github.com/3irdo/clubest',
+  site: 'https://3irdo.github.io/clubest',
   base: '/clubest',
   outDir: './docs'
 });
