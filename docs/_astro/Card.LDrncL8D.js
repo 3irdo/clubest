@@ -1,0 +1,1 @@
+import{j as a}from"./jsx-runtime.D_zvdyIk.js";import"./index.Cd_vQiNd.js";const n=({children:o,className:r="",hoverable:s=!0})=>{const t=s?"hover:shadow-md hover:-translate-y-1":"";return a.jsx("div",{className:`bg-slate-50 rounded-2xl shadow-sm overflow-hidden transition-all duration-300 ${t} ${r}`,children:o})};export{n as C};
