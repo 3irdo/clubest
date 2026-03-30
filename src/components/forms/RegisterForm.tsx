@@ -25,20 +25,20 @@ export const RegisterForm: React.FC = () => {
     setIsLoading(true);
 
     setTimeout(() => {
-      window.location.href = '/dashboard';
+      window.location.href = withBase('dashboard');
     }, 1000);
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-2xl p-8 w-full max-w-md">
-      <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold text-primary-dark mb-2">
+    <div className="bg-slate-50 rounded-2xl shadow-sm border border-gray-100/50 p-8 md:p-10 w-full max-w-md">
+      <div className="text-center mb-10">
+        <h1 className="text-3xl font-bold text-primary-dark mb-2 tracking-tight">
           <span className="text-accent-green">CLUBEST</span>
         </h1>
-        <h2 className="text-2xl font-semibold text-primary-dark">Crear cuenta</h2>
+        <h2 className="text-xl font-medium text-text-secondary">Crear cuenta</h2>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-5">
         <Input
           type="text"
           name="fullName"

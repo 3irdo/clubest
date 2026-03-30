@@ -1,18 +1,16 @@
 ---
 import { InventoryManagement } from "../components/admin/InventoryManagement";
 import { UserManagement } from "../components/admin/UserManagement";
+import DashboardLayout from "../layouts/DashboardLayout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml"  />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>ClubestLogin</title>
-	</head>
-	<main>
-        <InventoryManagement client:idle/>
-        <UserManagement client:idle/>
-    </main>
-</html>
+<DashboardLayout title="Administración">
+  <div class="space-y-8">
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-100/50 p-6 md:p-8">
+        <InventoryManagement client:load />
+    </div>
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-100/50 p-6 md:p-8">
+        <UserManagement client:load />
+    </div>
+  </div>
+</DashboardLayout>

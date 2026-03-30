@@ -36,40 +36,41 @@ export const ProductGrid: React.FC = () => {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {filteredProducts.map((product) => (
-          <Card key={product.id}>
-            <img
-              src={product.image_url}
-              alt={product.name}
-              className="w-full h-48 object-cover rounded-lg mb-4"
-            />
-            <div className="space-y-2">
-              <span className="inline-block px-3 py-1 bg-secondary bg-opacity-20 text-primary text-sm font-semibold rounded-full">
-                {product.category}
-              </span>
-              <h3 className="text-xl font-bold text-primary-dark">
-                {product.name}
-              </h3>
-              <p className="text-text-secondary text-sm line-clamp-2">
-                {product.description}
-              </p>
-              <div className="flex items-center justify-between pt-4">
-                <span className="text-2xl font-bold text-primary">
-                  ${product.price.toLocaleString()}
-                </span>
-                <span className="text-sm text-text-secondary">
-                  Stock: {product.stock}
-                </span>
+          <Card key={product.id} className="flex flex-col h-full border border-gray-100/50 group">
+            <div className="relative aspect-square overflow-hidden bg-gray-100">
+              <img
+                src={product.image_url}
+                alt={product.name}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+            </div>
+            <div className="p-4 flex flex-col flex-1">
+              <div>
+                <p className="text-xs font-bold tracking-wider text-secondary uppercase mb-1">
+                  {product.category}
+                </p>
+                <h3 className="text-lg font-bold text-primary-dark leading-tight mb-1 line-clamp-1">
+                  {product.name}
+                </h3>
               </div>
-              <Button
-                variant="accent"
-                className="w-full flex items-center justify-center gap-2"
-                disabled={product.stock === 0}
-              >
-                <ShoppingCart size={20} />
-                Agregar al carrito
-              </Button>
+              <div className="mt-auto pt-3 border-t border-gray-100 flex items-end justify-between">
+                <div>
+                  <span className="block text-xl font-black text-primary">
+                    ${product.price.toLocaleString()}
+                  </span>
+                  <span className={`text-xs font-medium ${product.stock > 0 ? 'text-green-600' : 'text-red-500'}`}>
+                    {product.stock > 0 ? `Stock: ${product.stock}` : 'Agotado'}
+                  </span>
+                </div>
+                <button
+                  disabled={product.stock === 0}
+                  className="bg-accent-green hover:bg-secondary text-primary-dark w-10 h-10 rounded-full shadow-sm transition-colors flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  <ShoppingCart size={18} />
+                </button>
+              </div>
             </div>
           </Card>
         ))}

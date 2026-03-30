@@ -1,0 +1,37 @@
+---
+import { Image } from "astro:assets";
+import womanArcher from "@/assets/landing/womanArcher.jpg";
+import { withBase } from "../../lib/withBase";
+---
+
+<section class="relative bg-primary-dark text-white min-h-[60vh] flex items-center overflow-hidden py-24 px-4">
+  <div class="absolute inset-0 z-0">
+    <Image
+      src={womanArcher}
+      alt="Tiro con arco"
+      class="w-full h-full object-cover opacity-50"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-primary-dark via-primary-dark/80 to-transparent"></div>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto w-full">
+    <div class="max-w-2xl space-y-8">
+      <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+        Pasión en <br />
+        <span class="text-accent-green">Cada Tiro</span>
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-300 leading-relaxed">
+        Únete al club de tiro con arco más diverso. Entrenamiento profesional,
+        comunidad apasionada y equipamiento de calidad para todos los niveles.
+      </p>
+      <div class="flex gap-4 pt-4">
+        <a
+          href={withBase("store")}
+          class="bg-accent-green hover:bg-secondary text-primary-dark font-bold rounded-lg transition-all duration-300 py-4 px-10 text-lg inline-block text-center shadow-lg hover:shadow-xl hover:-translate-y-1 transform"
+        >
+          Ver equipamiento
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

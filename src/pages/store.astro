@@ -1,5 +1,7 @@
 ---
+import { Navbar } from "@/components/navigation/Navbar";
 import { ProductGrid } from "../components/store/ProductGrid";
+import { ContactSection } from "@/components/landing/ContactSection";
 ---
 
 <html lang="en">
@@ -10,7 +12,11 @@ import { ProductGrid } from "../components/store/ProductGrid";
 		<meta name="generator" content={Astro.generator} />
 		<title>ClubestLogin</title>
 	</head>
-	<main>
-        <ProductGrid client:load/>
-    </main>
+	<body class="bg-gray-50 flex flex-col min-h-screen">
+		<Navbar client:load />
+		<main class="flex-grow pt-32 pb-20 px-4 max-w-7xl mx-auto w-full">
+			<ProductGrid client:load />
+		</main>
+		<ContactSection />
+	</body>
 </html>
