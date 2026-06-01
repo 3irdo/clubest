@@ -1,11 +1,32 @@
 import React from 'react';
 import { ShoppingCart } from 'lucide-react';
-import mockData from '../../data/mockData.json';
 import { withBase } from '../../lib/withBase';
 
-export const ProductsSection: React.FC = () => {
-  const products = mockData.products.slice(0, 3);
+const mockProducts = [
+  {
+    "id": "prod_1",
+    "name": "Arco Recurvo Profesional X1",
+    "description": "Arco olímpico de alta competición con cuerpo de aluminio y palas de carbono.",
+    "price": 850.00,
+    "image_url": "https://images.unsplash.com/photo-1511267814421-e37452d9a62a?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    "id": "prod_2",
+    "name": "Set Flechas Carbono Pro (12x)",
+    "description": "Flechas de carbono puro con rectitud de .003\", ideales para precisión a larga distancia.",
+    "price": 120.50,
+    "image_url": "https://images.unsplash.com/photo-1542617651-40432320bca3?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    "id": "prod_3",
+    "name": "Diana Oficial World Archery 122cm",
+    "description": "Diana oficial para competiciones internacionales, material resistente a la intemperie.",
+    "price": 45.00,
+    "image_url": "https://plus.unsplash.com/premium_photo-1661814674384-5a266cecb9d7?q=80&w=800&auto=format&fit=crop"
+  }
+];
 
+export const ProductsSection: React.FC = () => {
   return (
     <section id="equipamiento" className="py-20 px-4 bg-white">
       <div className="max-w-7xl mx-auto">
@@ -20,7 +41,7 @@ export const ProductsSection: React.FC = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-10">
-          {products.map((product) => (
+          {mockProducts.map((product) => (
             <div key={product.id} className="bg-slate-50 rounded-2xl shadow-sm border border-gray-100/50 overflow-hidden hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
               <div className="relative aspect-[4/3] overflow-hidden">
                 <img

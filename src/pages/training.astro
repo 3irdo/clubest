@@ -1,10 +1,8 @@
 ---
-import { TrainingCalendar } from "../components/trainings/TrainingCalendar";
-import DashboardLayout from "../layouts/DashboardLayout.astro";
+import { TrainingApp } from "../apps/TrainingApp";
+import HtmlLayout from "../layouts/HtmlLayout.astro";
 ---
 
-<DashboardLayout title="Entrenamientos">
-  <div class="bg-white rounded-2xl shadow-sm border border-gray-100/50 p-6 md:p-8">
-    <TrainingCalendar client:load />
-  </div>
-</DashboardLayout>
+<HtmlLayout title="Entrenamientos">
+  <TrainingApp client:load />
+</HtmlLayout>

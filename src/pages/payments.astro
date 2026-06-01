@@ -1,10 +1,8 @@
 ---
-import { PaymentHistory } from "../components/payments/PaymentsHistory";
-import DashboardLayout from "../layouts/DashboardLayout.astro";
+import { PaymentsApp } from "../apps/PaymentsApp";
+import HtmlLayout from "../layouts/HtmlLayout.astro";
 ---
 
-<DashboardLayout title="Pagos">
-  <div class="bg-white rounded-2xl shadow-sm border border-gray-100/50 p-6 md:p-8">
-    <PaymentHistory client:load />
-  </div>
-</DashboardLayout>
+<HtmlLayout title="Pagos">
+  <PaymentsApp client:load />
+</HtmlLayout>

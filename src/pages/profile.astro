@@ -1,10 +1,8 @@
 ---
-import { ProfileInfo } from "../components/profile/ProfileInfo";
-import DashboardLayout from "../layouts/DashboardLayout.astro";
+import { ProfileApp } from "../apps/ProfileApp";
+import HtmlLayout from "../layouts/HtmlLayout.astro";
 ---
 
-<DashboardLayout title="Perfil">
-  <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-sm border border-gray-100/50 p-6 md:p-8">
-    <ProfileInfo client:load />
-  </div>
-</DashboardLayout>
+<HtmlLayout title="Perfil">
+  <ProfileApp client:load />
+</HtmlLayout>

@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
-import { Menu, X, User, Bell } from 'lucide-react';
+import { Menu, X, ShoppingCart } from 'lucide-react';
 import { withBase } from '../../lib/withBase';
+import { UserMenu } from './UserMenu';
+import { NotificationPanel } from './NotificationPanel';
 
 interface NavbarProps {
   isLanding?: boolean;
+  onCartClick?: () => void;
+  totalCartItems?: number;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ isLanding = true }) => {
+export const Navbar: React.FC<NavbarProps> = ({ isLanding = true, onCartClick, totalCartItems = 0 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   if (isLanding) {
@@ -81,13 +85,18 @@ export const Navbar: React.FC<NavbarProps> = ({ isLanding = true }) => {
           </div>
 
           <div className="flex items-center space-x-4">
-            <button className="p-2 hover:bg-primary rounded-lg transition-colors relative">
-              <Bell size={20} />
-              <span className="absolute top-1 right-1 w-2 h-2 bg-accent-green rounded-full"></span>
-            </button>
-            <button className="p-2 hover:bg-primary rounded-lg transition-colors">
-              <User size={20} />
-            </button>
+            {onCartClick && (
+              <button onClick={onCartClick} className="p-2 hover:bg-primary rounded-lg transition-colors relative">
+                <ShoppingCart size={20} />
+                {totalCartItems > 0 && (
+                  <span className="absolute -top-1 -right-1 w-5 h-5 bg-accent-green text-primary-dark text-xs font-bold rounded-full flex items-center justify-center">
+                    {totalCartItems > 9 ? '9+' : totalCartItems}
+                  </span>
+                )}
+              </button>
+            )}
+            <NotificationPanel />
+            <UserMenu />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="md:hidden"

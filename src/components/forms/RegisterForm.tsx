@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { Button } from '../ui/Button';
-import { Input } from '../ui/Input';
-import { withBase } from '../../lib/withBase';
+import React, { useState } from 'react'
+import { Button } from '../ui/Button'
+import { Input } from '../ui/Input'
+import { withBase } from '../../lib/withBase'
+import { register } from '../../lib/auth'
 
 export const RegisterForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -10,24 +11,42 @@ export const RegisterForm: React.FC = () => {
     phone: '',
     password: '',
     confirmPassword: ''
-  });
-  const [isLoading, setIsLoading] = useState(false);
+  })
+  const [isLoading, setIsLoading] = useState(false)
+  const [errorMsg, setErrorMsg] = useState('')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
-    });
-  };
+    })
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
+    e.preventDefault()
+    setErrorMsg('')
 
-    setTimeout(() => {
-      window.location.href = withBase('dashboard');
-    }, 1000);
-  };
+    if (formData.password !== formData.confirmPassword) {
+      setErrorMsg('Las contraseñas no coinciden')
+      return
+    }
+
+    setIsLoading(true)
+
+    try {
+      await register({
+        email: formData.email,
+        password: formData.password,
+        fullName: formData.fullName,
+        phone: formData.phone
+      })
+      window.location.href = withBase('dashboard')
+    } catch (err: any) {
+      setErrorMsg(err.message || 'Error al registrarse')
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
   return (
     <div className="bg-slate-50 rounded-2xl shadow-sm border border-gray-100/50 p-8 md:p-10 w-full max-w-md">
@@ -87,6 +106,10 @@ export const RegisterForm: React.FC = () => {
           required
         />
 
+        {errorMsg && (
+          <p className="text-red-500 text-sm text-center">{errorMsg}</p>
+        )}
+
         <Button
           type="submit"
           variant="primary"
@@ -106,5 +129,5 @@ export const RegisterForm: React.FC = () => {
         </p>
       </div>
     </div>
-  );
-};
+  )
+}
