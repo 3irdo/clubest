@@ -26,6 +26,6 @@ pnpm-debug.log*
 # Supabase CLI
 .supabase/
 
-.AGENTS.md
-.PROJECT_CONTEXT.md
-.opencode.json
+AGENTS.md
+PROJECT_CONTEXT.md
+opencode.json
