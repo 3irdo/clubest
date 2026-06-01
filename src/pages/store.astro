@@ -1,22 +1,8 @@
 ---
-import { Navbar } from "@/components/navigation/Navbar";
-import { ProductGrid } from "../components/store/ProductGrid";
-import { ContactSection } from "@/components/landing/ContactSection";
+import { StoreApp } from "../apps/StoreApp";
+import HtmlLayout from "../layouts/HtmlLayout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml"  />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>ClubestLogin</title>
-	</head>
-	<body class="bg-gray-50 flex flex-col min-h-screen">
-		<Navbar client:load />
-		<main class="flex-grow pt-32 pb-20 px-4 max-w-7xl mx-auto w-full">
-			<ProductGrid client:load />
-		</main>
-		<ContactSection />
-	</body>
-</html>
+<HtmlLayout title="Tienda">
+  <StoreApp client:load />
+</HtmlLayout>

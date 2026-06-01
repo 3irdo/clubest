@@ -7,7 +7,6 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   integrations: [react(), tailwind()],
   output: 'static',
-  site:'https://github.com/3irdo/clubest',
-  base: '/clubest'
+  site: 'https://clubest.vercel.app',
 });
 

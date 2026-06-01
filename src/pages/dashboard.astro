@@ -1,14 +1,8 @@
 ---
-import { DashboardStats } from "../components/dashboard/DashboardStats";
-import { QuickActions } from "../components/dashboard/QuickActions";
-import { RecentActivity } from "../components/dashboard/RecentActivity";
-import DashboardLayout from "../layouts/DashboardLayout.astro";
+import { DashboardApp } from "../apps/DashboardApp";
+import HtmlLayout from "../layouts/HtmlLayout.astro";
 ---
 
-<DashboardLayout title="Dashboard">
-  <div class="space-y-8">
-    <DashboardStats client:load />
-    <QuickActions client:load />
-    <RecentActivity client:load />
-  </div>
-</DashboardLayout>
+<HtmlLayout title="Dashboard">
+  <DashboardApp client:load />
+</HtmlLayout>

@@ -22,3 +22,10 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Supabase CLI
+.supabase/
+
+AGENTS.md
+PROJECT_CONTEXT.md
+opencode.json

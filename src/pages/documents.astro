@@ -1,10 +1,8 @@
 ---
-import { DocumentManager } from "../components/documents/DocumentManager";
-import DashboardLayout from "../layouts/DashboardLayout.astro";
+import { DocumentsApp } from "../apps/DocumentsApp";
+import HtmlLayout from "../layouts/HtmlLayout.astro";
 ---
 
-<DashboardLayout title="Documentos">
-  <div class="bg-white rounded-2xl shadow-sm border border-gray-100/50 p-6 md:p-8">
-    <DocumentManager client:load />
-  </div>
-</DashboardLayout>
+<HtmlLayout title="Documentos">
+  <DocumentsApp client:load />
+</HtmlLayout>
