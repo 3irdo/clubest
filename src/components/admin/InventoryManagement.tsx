@@ -169,9 +169,9 @@ export const InventoryManagement: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
         <h2 className="text-2xl font-bold text-primary-dark">Gestión de Inventario</h2>
-        <Button variant="accent" onClick={openCreate}>
+        <Button variant="accent" onClick={openCreate} className="w-full sm:w-auto">
           <Package size={20} className="mr-2" />
           Nuevo Producto
         </Button>
@@ -272,7 +272,7 @@ export const InventoryManagement: React.FC = () => {
             value={form.description}
             onChange={(e) => setForm({ ...form, description: e.target.value })}
           />
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Input
               label="Precio"
               type="number"

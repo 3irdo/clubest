@@ -37,13 +37,11 @@ export const ProductGrid: React.FC = () => {
   useEffect(() => {
     getClients().then((data) => {
       setClients(data);
-      if (!selectedClient && clientId) setSelectedClient(clientId);
+      if (!selectedClient) {
+        setSelectedClient(clientId ? clientId : '__all__');
+      }
     }).catch(() => {});
   }, [clientId]);
-
-  useEffect(() => {
-    if (clientId && !selectedClient) setSelectedClient(clientId);
-  }, [clientId, selectedClient]);
 
   const showAll = selectedClient === '__all__';
   const activeClient = showAll ? null : (selectedClient || clientId);
@@ -71,33 +69,33 @@ export const ProductGrid: React.FC = () => {
 
   const inCart = (id: string) => items.some(i => i.id === id);
 
-  if ((!showAll && !activeClient) || isLoading) return <LoadingSpinner message="Cargando productos..." />;
+  if (isLoading) return <LoadingSpinner message="Cargando productos..." />;
   if (error) return <ErrorMessage message={error} />;
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-wrap gap-4 justify-between items-center">
+      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 sm:items-center sm:justify-between">
         <h2 className="text-2xl font-bold text-primary-dark">
           {showAll ? 'Todos los productos' : `Tienda ${clients.find(c => c.id_client === activeClient)?.name ?? ''}`}
         </h2>
-        <div className="flex items-center gap-3">
+        <div className="flex flex-col sm:flex-row gap-2 sm:items-center sm:gap-3">
           <select
             value={showAll ? '__all__' : activeClient}
             onChange={(e) => setSelectedClient(e.target.value)}
-            className="input-field text-sm py-1.5 pr-8 min-w-[180px]"
+            className="input-field text-sm py-1.5 pr-8 w-full sm:min-w-[180px]"
           >
-            <option value={clientId ?? ''}>My Club</option>
+            {clientId && <option value={clientId}>My Club</option>}
             <option value="__all__">All Clubs</option>
             {clients.filter(c => c.id_client !== clientId).map((c) => (
               <option key={c.id_client} value={c.id_client}>{c.name}</option>
             ))}
           </select>
-          <div className="flex items-center gap-2">
-            <ArrowUpDown size={16} className="text-text-secondary" />
+          <div className="flex items-center gap-2 w-full sm:w-auto">
+            <ArrowUpDown size={16} className="text-text-secondary shrink-0" />
             <select
               value={sort}
               onChange={(e) => setSort(e.target.value as SortOption)}
-              className="input-field text-sm py-1.5 pr-8"
+              className="input-field text-sm py-1.5 pr-8 w-full sm:w-auto"
             >
               {sortOptions.map(o => (
                 <option key={o.value} value={o.value}>{o.label}</option>
@@ -107,7 +105,7 @@ export const ProductGrid: React.FC = () => {
           <select
             value={stockFilter}
             onChange={(e) => setStockFilter(e.target.value as StockFilter)}
-            className="input-field text-sm py-1.5 pr-8"
+            className="input-field text-sm py-1.5 pr-8 w-full sm:w-auto"
           >
             {stockFilters.map(f => (
               <option key={f.value} value={f.value}>{f.label}</option>
