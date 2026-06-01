@@ -46,7 +46,7 @@ export async function getCurrentUser() {
   return data.user
 }
 
-export async function register(userData: { email: string, password: string, fullName: string, phone: string }) {
+export async function register(userData: { email: string, password: string, fullName: string, phone: string, clientId: string }) {
   const { data, error } = await supabase.auth.signUp({
     email: userData.email,
     password: userData.password,
@@ -62,13 +62,11 @@ export async function register(userData: { email: string, password: string, full
     const firstName = names[0] || ''
     const lastName = names.slice(1).join(' ') || ''
 
-    // For MVP: assign to default test client and MEMBER role
-    const defaultClientId = '61018d17-beb6-42ef-9665-e9a6269639b0' // test client
     const memberRoleId = 'f82da42a-567c-4c1d-a62b-157278502a34' // MEMBER role
 
     const { error: profileError } = await supabase.from('profiles').insert({
       id: data.user.id,
-      client_id: defaultClientId,
+      client_id: userData.clientId,
       id_role: memberRoleId,
       first_name: firstName,
       last_name: lastName,
@@ -84,7 +82,7 @@ export async function register(userData: { email: string, password: string, full
 
     // Notify new member
     createNotification({
-      client_id: defaultClientId,
+      client_id: userData.clientId,
       user_id: data.user.id,
       title: 'Welcome to Clubest!',
       message: `Hi ${firstName}, your account is ready. Start exploring the dashboard.`,
@@ -93,7 +91,7 @@ export async function register(userData: { email: string, password: string, full
     }).catch(console.error)
 
     // Notify all admins
-    notifyRole(defaultClientId, 'ADMIN', {
+    notifyRole(userData.clientId, 'ADMIN', {
       title: 'New member registered',
       message: `${firstName} ${lastName} has joined as a new member.`,
       type: 'info',

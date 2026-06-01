@@ -3,12 +3,17 @@
 
 import { supabase } from '../supabase'
 
-export async function getProducts(clientId: string) {
-  const { data, error } = await supabase
+export async function getProducts(clientId?: string | null) {
+  let query = supabase
     .from('products')
     .select('*')
-    .eq('client_id', clientId)
     .order('name', { ascending: true })
+
+  if (clientId) {
+    query = query.eq('client_id', clientId)
+  }
+
+  const { data, error } = await query
 
   if (error) {
     console.error(error)
