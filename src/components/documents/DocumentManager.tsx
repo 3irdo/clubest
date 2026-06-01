@@ -136,9 +136,9 @@ export const DocumentManager: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
         <h2 className="text-2xl font-bold text-primary-dark">Mis Documentos</h2>
-        <Button variant="accent" onClick={() => setIsUploadModalOpen(true)}>
+        <Button variant="accent" onClick={() => setIsUploadModalOpen(true)} className="w-full sm:w-auto">
           <Upload size={20} className="mr-2" />
           Subir Documento
         </Button>

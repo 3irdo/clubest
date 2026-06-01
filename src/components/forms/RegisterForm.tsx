@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button } from '../ui/Button'
 import { Input } from '../ui/Input'
 import { withBase } from '../../lib/withBase'
 import { register } from '../../lib/auth'
+import { getClients } from '../../lib/api/clients'
 
 export const RegisterForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -12,8 +13,21 @@ export const RegisterForm: React.FC = () => {
     password: '',
     confirmPassword: ''
   })
+  const [clients, setClients] = useState<{ id_client: string; name: string }[]>([])
+  const [selectedClient, setSelectedClient] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [loadingClients, setLoadingClients] = useState(true)
   const [errorMsg, setErrorMsg] = useState('')
+
+  useEffect(() => {
+    getClients()
+      .then((data) => {
+        setClients(data)
+        if (data.length > 0) setSelectedClient(data[0].id_client)
+      })
+      .catch(() => setErrorMsg('Error al cargar los clubes'))
+      .finally(() => setLoadingClients(false))
+  }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -25,6 +39,11 @@ export const RegisterForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setErrorMsg('')
+
+    if (!selectedClient) {
+      setErrorMsg('Selecciona un club')
+      return
+    }
 
     if (formData.password !== formData.confirmPassword) {
       setErrorMsg('Las contraseñas no coinciden')
@@ -38,7 +57,8 @@ export const RegisterForm: React.FC = () => {
         email: formData.email,
         password: formData.password,
         fullName: formData.fullName,
-        phone: formData.phone
+        phone: formData.phone,
+        clientId: selectedClient,
       })
       window.location.href = withBase('dashboard')
     } catch (err: any) {
@@ -58,6 +78,28 @@ export const RegisterForm: React.FC = () => {
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-5">
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Club</label>
+          {loadingClients ? (
+            <div className="input-field text-sm text-text-secondary flex items-center gap-2">
+              <div className="w-4 h-4 border-2 border-accent-green border-t-transparent rounded-full animate-spin" />
+              Cargando clubes...
+            </div>
+          ) : (
+            <select
+              value={selectedClient}
+              onChange={(e) => setSelectedClient(e.target.value)}
+              className="input-field"
+              required
+            >
+              <option value="">Seleccionar club</option>
+              {clients.map((c) => (
+                <option key={c.id_client} value={c.id_client}>{c.name}</option>
+              ))}
+            </select>
+          )}
+        </div>
+
         <Input
           type="text"
           name="fullName"

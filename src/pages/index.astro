@@ -1,5 +1,5 @@
 ---
-import { Navbar } from '../components/navigation/Navbar';
+import { LandingNavbar } from '../components/navigation/LandingNavbar';
 import { AboutSection } from '../components/landing/AboutSection';
 import { ContactSection } from '../components/landing/ContactSection';
 import HeroSection from '../components/landing/HeroSection.astro';
@@ -15,10 +15,10 @@ import { ProductsSection } from '../components/landing/ProductsSection';
 		<title>Clubest</title>
 	</head>
 	<body>
-		<Navbar client:load/>
+		<LandingNavbar client:load/>
 		<HeroSection/>
 		<AboutSection/>
-		<ProductsSection/>
+		<ProductsSection client:load/>
 		<ContactSection/>
 	</body>
 </html>
